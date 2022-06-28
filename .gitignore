@@ -1,0 +1,6 @@
+# Ignore files from python venv
+bin/
+include/
+lib/
+lib64/
+pyvenv.cfg

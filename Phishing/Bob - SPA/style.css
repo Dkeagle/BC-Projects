@@ -1,0 +1,114 @@
+/* GENERAL */
+
+*, *::before, *::after{
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+
+/* HEADER */
+.header{
+    background-color: #072940;
+    width: 100%;
+    height: 60px;
+}
+
+.header ul{
+    list-style: none;
+}
+
+.header li{
+    float: right;
+    color: white;
+    line-height: 60px;
+    margin-right: 30px;
+    font-size: 0.9em;
+}
+
+#facebook::before, #mail::before, #telephone::before{
+    content: "";
+    padding-right: 10px;
+    background-size: 20px 20px;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    background-repeat: no-repeat;
+    vertical-align: -5px;
+}
+
+#facebook::before{
+    background-image: url(assets/facebook-blue.svg);
+}
+
+#mail::before{
+    background-image: url(assets/lettre-blue.svg);
+}
+
+#telephone::before{
+    background-image: url(assets/tel-blue.svg);
+}
+
+.header li:hover{
+    color: #289ee2;
+    transition: .3s ease-in-out;
+    cursor: pointer;
+}
+
+/* MAIN */
+
+.main h1{
+    color: #289ee2;
+    font-weight: 1000;
+    font-size: 2em;
+    font-family:Arial, Helvetica, sans-serif;
+    width: 100%;
+    text-align: center;
+    margin: 20px;
+    float: left;
+}
+
+.main h1 span{
+    font-weight: normal;
+    font-size: .9em;
+    padding-left: 10px;
+}
+
+.main h1::before{
+    content: "";
+    background-image: url(assets/logo.svg);
+    background-size: 50px;
+    vertical-align: -50%;
+    width: 50px;
+    height: 50px;
+    padding-right: 20px;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+.main h1:hover{
+    opacity: 50%;
+    transition: .3s ease-in-out;
+    cursor: pointer;
+}
+
+.article{
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    justify-content: space-between;
+    margin: auto;
+}
+
+.main img{
+    width: 50%;
+    margin-right: 50px;
+}
+
+.main p{
+    width: 50%;
+}
+
+.main p a, .main p a:hover, .main p a:visited{
+    color: #289ee2;
+    text-decoration: none;
+}
