@@ -52,7 +52,7 @@
         {% endif %}
         <br>
         <label for="mail">Mail address: </label>
-        <input type="text" name="mail" id="mail" value="{{ request.form['mail'] }}">
+        <input type="email" name="mail" id="mail" value="{{ request.form['mail'] }}">
         {% if "mail_empty" in messages %}
             <p>You must enter your email address!</p>
         {% endif %}
