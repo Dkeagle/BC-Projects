@@ -32,21 +32,30 @@
                        'Virgin Islands, British', 'Virgin Islands, U.S.', 'Wallis and Futuna', 'Yemen', 'Zambia', 'Zimbabwe']
 %}
 
+{% set messages = get_flashed_messages() %}
+
+{# Template code #}
 {% block content %}
-{% for message in get_flashed_messages() %}
-    <p>{{ message }}</p>
-{% endfor %}
 <form method="post">
     <fieldset>
         <legend>Who ?</legend>
         <label for="first_name">First name: </label>
         <input type="text" name="first_name" id="first_name" value="{{ request.form['first_name'] }}">
+        {% if "fn_empty" in messages %}
+            <p>You must enter your first name!</p>
+        {% endif %}
         <br>
         <label for="last_name">Last name: </label>
         <input type="text" name="last_name" id="last_name" value="{{ request.form['last_name'] }}">
+        {% if "ln_empty" in messages %}
+            <p>You must enter your last name!</p>
+        {% endif %}
         <br>
         <label for="mail">Mail address: </label>
         <input type="text" name="mail" id="mail" value="{{ request.form['mail'] }}">
+        {% if "mail_empty" in messages %}
+            <p>You must enter your email address!</p>
+        {% endif %}
         <br>
         <fieldset>
             <legend>Gender: </legend>
@@ -54,6 +63,11 @@
             <label for="male">Male</label>
             <input type="radio" name="gender" value="female" id="female">
             <label for="female">Female</label>
+            <input type="radio" name="gender" value="nb" id="nb">
+            <label for="nb">Non-binary</label>
+            {% if "gender_empty" in messages %}
+                <p>Please select a gender.</p>
+            {% endif %}
         </fieldset>
         <label for="country">Country: </label>
         <select name="country" id="country">
@@ -61,6 +75,9 @@
             <option value="{{country}}">{{country}}</option>
             {% endfor %}
         </select>
+        {% if "country_empty" in messages %}
+            <p>You must select a country in the list!</p>
+        {% endif %}
     </fieldset>
     <fieldset>
         <legend>Why ?</legend>
@@ -70,10 +87,16 @@
         <label for="order">Order</label>
         <input type="checkbox" name="reason" value="other" id="other">
         <label for="other">Other</label>
+        {% if "reason_empty" in messages %}
+            <p>You must select at least one reason to contact us!</p>
+        {% endif %}
     </fieldset>
     <fieldset>
         <legend>What ?</legend>
         <textarea name="content" cols="30" rows="10">{{ request.form['content'] }}</textarea>
+        {% if "content_empty" in messages %}
+            <p>Please describe your problem.</p>
+        {% endif %}
     </fieldset>
     <button type="submit">Submit</button>
 </form>
