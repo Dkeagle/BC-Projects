@@ -1,11 +1,13 @@
 from flask import Flask, render_template, redirect, request, url_for, flash
+import re
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'd7a70bcb88e5c190838b4c12fbf0a26efbf328bcf55ebdf5'
 
-def sanitize(post_content):
-    """sanitize every input from the form, returns True when done"""
+def validate(post_content):
+    """validate every input from the form with a RegEx, returns True when done"""
     pc = post_content
+    
     return True
 
 def check(post_content):
@@ -40,7 +42,7 @@ def main():
     """main function, executed when people access the main page"""
     if request.method == 'POST':
         if check(request):
-            if sanitize(request):
+            if validate(request):
                 return redirect(url_for('thanks'), code=307)
 
     return render_template("form.html")
