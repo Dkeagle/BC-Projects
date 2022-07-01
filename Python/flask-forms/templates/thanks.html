@@ -2,4 +2,12 @@
 
 {% block content %}
     <p>Thanks for contacting our services! {{ first_name }}</p>
+    <br>
+    <p>First name: {{ form_data["first_name"] }}</p>
+    <p>Last name: {{ form_data["last_name"] }}</p>
+    <p>Email address: {{ form_data["mail"] }}</p>
+    <p>Gender: {{ form_data["gender"] }}</p>
+    <p>Country: {{ form_data["country"] }}</p>
+    <p>Reason: {{ form_data["reason"] }}</p>
+    <p>Content: {{ form_data["content"] }}</p>
 {% endblock %}

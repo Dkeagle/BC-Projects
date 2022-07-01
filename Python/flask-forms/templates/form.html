@@ -43,18 +43,24 @@
         <input type="text" name="first_name" id="first_name" value="{{ request.form['first_name'] }}">
         {% if "fn_empty" in messages %}
             <p>You must enter your first name!</p>
+        {% elif "fn_incorrect" in messages %}
+            <p>That's not a valid first name!</p>
         {% endif %}
         <br>
         <label for="last_name">Last name: </label>
         <input type="text" name="last_name" id="last_name" value="{{ request.form['last_name'] }}">
         {% if "ln_empty" in messages %}
             <p>You must enter your last name!</p>
+        {% elif "ln_incorrect" in messages %}
+            <p>That's not a valid last name!</p>
         {% endif %}
         <br>
         <label for="mail">Mail address: </label>
-        <input type="email" name="mail" id="mail" value="{{ request.form['mail'] }}">
+        <input type="text" name="mail" id="mail" value="{{ request.form['mail'] }}">
         {% if "mail_empty" in messages %}
             <p>You must enter your email address!</p>
+        {% elif "mail_incorrect" in messages %}
+            <p>That's not a valid email address!</p>
         {% endif %}
         <br>
         <fieldset>
