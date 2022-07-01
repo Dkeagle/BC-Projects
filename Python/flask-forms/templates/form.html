@@ -87,17 +87,17 @@
     </fieldset>
     <fieldset>
         <legend>Why ?</legend>
-        <!-- Honeypot -->
-            <input type="checkbox" name="phone_call" value="1" style="display: hidden;" autocomplete="off">
-        <!-- /Honeypot -->
         <input type="checkbox" name="reason" value="repair" id="repair">
         <label for="repair">Repair</label>
         <input type="checkbox" name="reason" value="order" id="order">
         <label for="order">Order</label>
         <input type="checkbox" name="reason" value="other" id="other">
         <label for="other">Other</label>
+        <!-- Honeypot -->
+            <input type="checkbox" name="phone_call" value="1" style="visibility: hidden;" autocomplete="off">
+        <!-- /Honeypot -->
         {% if "reason_empty" in messages %}
-            <p>You must select at least one reason to contact us!</p>
+        <p>You must select at least one reason to contact us!</p>
         {% endif %}
     </fieldset>
     <fieldset>

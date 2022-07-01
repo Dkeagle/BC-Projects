@@ -1,7 +1,6 @@
 from flask import Flask, render_template, redirect, request, url_for, flash, session
 import re
 import bleach as bl
-import sys
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'd7a70bcb88e5c190838b4c12fbf0a26efbf328bcf55ebdf5'
@@ -17,16 +16,16 @@ def validate(post_content):
     """validate every input from the form with a RegEx, returns True when done"""
     pc = post_content
     err = 0
-    name_regex = "[a-zA-Z-]+"
-    mail_regex = "[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+"
+    name_regex = "^[a-zA-Z-]+$"
+    mail_regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$"
 
-    if not re.match(name_regex, pc.form["first_name"]):
+    if not re.search(name_regex, pc.form["first_name"]):
         flash("fn_incorrect")
         err += 1
-    if not re.match(name_regex, pc.form["last_name"]):
+    if not re.search(name_regex, pc.form["last_name"]):
         flash("ln_incorrect")
         err += 1
-    if not re.match(mail_regex, pc.form["mail"]):
+    if not re.search(mail_regex, pc.form["mail"]):
         flash("mail_incorrect")
         err += 1
     return False if err else True
@@ -69,7 +68,6 @@ def main():
         if check(request):
             if validate(request):
                 if sanitize(request):
-                    print(request.form, file=sys.stderr)
                     session["form_data"] = request.form
                     return redirect(url_for('thanks'), code=307)
 
