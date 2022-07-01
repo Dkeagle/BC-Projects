@@ -35,6 +35,10 @@ def check(post_content):
     """check every input from the form and flash error message when needed, returns True when done"""
     pc = post_content
     err = 0
+    # Honeypot
+    if "phone_call" in pc.form: 
+        return False
+    # /Honeypot
     if not pc.form["first_name"]:
         flash("fn_empty")
         err += 1
